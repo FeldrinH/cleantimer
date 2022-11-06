@@ -18,8 +18,10 @@ function parseTime(time: string | null): number {
 const urlParams = new URLSearchParams(window.location.search)
 const to = parseTime(urlParams.get('t'))
 if (Number.isNaN(to)) {
+    timeElement.textContent = '?:??:??';
+    
     const errorMessage = `Invalid time: '${urlParams.get('t')}'`;
-    alert(errorMessage);
+    setTimeout(() => alert(errorMessage));
     throw errorMessage;
 }
 
