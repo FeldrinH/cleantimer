@@ -1,0 +1,85 @@
+---
+// Themes
+
+export const themes = new Map([
+    'Light',
+    'Dark',
+    'Digital clock'
+].map(name => [name, new URL(`/public/themes/${name}.css`, import.meta.url).toString()]));
+
+// Settings storage
+
+interface Settings {
+    theme: string
+    negative: boolean
+}
+
+export function loadSettings(): Settings {
+    const stored = sessionStorage.getItem('settings') || localStorage.getItem('settings');
+    if (stored) {
+        return JSON.parse(stored);
+    } else {
+        return {
+            theme: themes.get('Light')!,
+            negative: false,
+        }
+    }
+}
+
+export function saveSettings(settings: Settings) {
+    const toStore = JSON.stringify(settings);
+    sessionStorage.setItem('settings', toStore);
+    localStorage.setItem('settings', toStore);
+}
+
+export function setupSettings() {
+    const settingsThemeElement = document.getElementById('settings-theme') as HTMLSelectElement;
+    const settingsNegativeElement = document.getElementById('settings-negative') as HTMLInputElement;
+
+    const themeCSSLinkElement = document.getElementById('theme-css-link') as HTMLLinkElement;
+    function updateTheme(theme: string) {
+        themeCSSLinkElement.href = themes.get(theme) || themes.get('Light')!;
+    }
+
+    let settings = loadSettings();
+    
+    updateTheme(settings.theme);
+
+    settingsThemeElement.value = settings.theme;
+    settingsNegativeElement.checked = settings.negative;
+
+    settingsThemeElement.addEventListener('change', event => {
+        settings.theme = (event.target as HTMLInputElement).value;
+        updateTheme(settings.theme);
+        saveSettings(settings);
+    })
+    settingsNegativeElement.addEventListener('change', event => {
+        settings.negative = (event.target as HTMLInputElement).checked;
+        saveSettings(settings);
+    })
+
+    return settings;
+}
+---
+<aside class="settings">
+    <select id="settings-theme">
+        {Array.from(themes.keys()).map(name => <option value={name}>{name}</option>)}
+    </select>
+    <input id="settings-negative" type="checkbox">Show negative
+</aside>
+
+<style>
+    .settings {
+        opacity: 0.001;
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        padding: 5px;
+        border-radius: 5px;
+    }
+
+    .settings:hover {
+        opacity: 1;
+        background-color: white;
+    }
+</style>

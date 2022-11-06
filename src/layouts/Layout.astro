@@ -4,6 +4,11 @@ export interface Props {
 }
 
 const { title } = Astro.props;
+
+export function tere() {
+	document.getElementById('');
+}
+
 ---
 
 <!DOCTYPE html>
@@ -12,7 +17,7 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+		<slot name="head" />
 		<title>{title}</title>
 	</head>
 	<body>
@@ -21,9 +26,12 @@ const { title } = Astro.props;
 </html>
 <style is:global>
 	html {
+		height: 100%;
 		font-family: system-ui, sans-serif;
 	}
+
 	body {
+		height: 100%;
 		margin: 0;
 	}
 </style>
