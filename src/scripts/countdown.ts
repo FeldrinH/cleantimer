@@ -17,7 +17,7 @@ function parseTime(time: string | null): number {
 
 const urlParams = new URLSearchParams(window.location.search)
 const to = parseTime(urlParams.get('t'))
-if (!Number.isFinite(to)) {
+if (Number.isNaN(to)) {
     const errorMessage = `Invalid time: '${urlParams.get('t')}'`;
     alert(errorMessage);
     throw errorMessage;
@@ -34,7 +34,7 @@ function formatTime(totalSeconds: number) {
     return `${totalSeconds < 0 ? '-' : ''}${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
 }
 
-let secondsLeft = 0;
+let secondsLeft: number;
 let alarmActive = false;
 
 function updateTime() {

@@ -21,7 +21,7 @@ function loadSettings(): Settings {
         return JSON.parse(stored);
     } else {
         return {
-            theme: themes.get('Light')!,
+            theme: 'light',
             negative: false,
         }
     }
@@ -46,7 +46,7 @@ const settingsNegativeElement = document.getElementById('settings-negative') as 
 
 const themeCSSLinkElement = document.getElementById('theme-css-link') as HTMLLinkElement;
 function updateTheme(theme: string) {
-    themeCSSLinkElement.href = themes.get(theme) || themes.get('Light')!;
+    themeCSSLinkElement.href = themes.get(theme) || themes.get('light')!;
 }
 
 updateTheme(settings.theme);
