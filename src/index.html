@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>[cleantimer]</title>
+
+    <style>
+        html {
+            height: 100%;
+            font-family: system-ui, sans-serif;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        main {
+            margin: auto;
+            padding: 1.5rem;
+            max-width: 60ch;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+		<form action="/countdown/" method="get">
+			<input name="t" type="text" autocapitalize="off">
+			<button>Start</button>
+		</form>
+	</main>
+</body>
+
+</html>

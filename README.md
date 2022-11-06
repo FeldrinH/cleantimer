@@ -1,1 +1,0 @@
-# Simple and clean timer

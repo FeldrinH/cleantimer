@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Countdown | [cleantimer]</title>
+
+    <style>
+        html {
+            height: 100%;
+            font-family: system-ui, sans-serif;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        @layer default-theme {
+            .container {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .container::after {
+                content: '';
+                flex: 0 1 15%;
+            }
+        }
+
+        .settings {
+            opacity: 0.001;
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .settings:hover {
+            opacity: 1;
+            background-color: white;
+        }
+    </style>
+    <link id="theme-css-link" rel="stylesheet" href="">
+    <script type="module" src="/scripts/countdown.ts"></script>
+</head>
+
+<body>
+    <main id="container" class="container">
+        <div id="time" class="time"></div>
+    </main>
+    <aside class="settings">
+        <select id="settings-theme">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="digital_clock">Digital clock</option>
+        </select>
+        <input id="settings-negative" type="checkbox">Show negative
+    </aside>
+</body>
+
+</html>
