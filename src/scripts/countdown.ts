@@ -16,7 +16,7 @@ function parseTime(time: string | null): number {
 }
 
 const urlParams = new URLSearchParams(window.location.search)
-const to = parseTime(urlParams.get('t'))
+const to = parseTime(urlParams.get('time'))
 if (Number.isNaN(to)) {
     timeElement.textContent = '?:??:??';
     
