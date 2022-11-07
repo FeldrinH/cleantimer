@@ -20,7 +20,7 @@ const to = parseTime(urlParams.get('time'))
 if (Number.isNaN(to)) {
     timeElement.textContent = '?:??:??';
     
-    const errorMessage = `Invalid time: '${urlParams.get('t')}'`;
+    const errorMessage = `Invalid time: '${urlParams.get('time')}'`;
     setTimeout(() => alert(errorMessage));
     throw errorMessage;
 }

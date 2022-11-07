@@ -1,7 +1,6 @@
 // Themes
 
 const themePaths = import.meta.glob('/themes/*.css', { as: 'url', eager: true });
-console.log(themePaths);
 const themes = new Map(Object.entries(themePaths).map(([location, path]) => {
     const name = location.slice(8, -4);
     return [name, path];

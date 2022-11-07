@@ -8,6 +8,11 @@
     <title>Countdown | [cleantimer]</title>
 
     <style>
+        @font-face {
+            font-family: 'DSEG7 Classic';
+            src: url('/fonts/DSEG7Classic-Regular.woff2') format('woff2'), url('/fonts/DSEG7Classic-Regular.woff') format('woff');
+        }
+
         html {
             height: 100%;
             font-family: system-ui, sans-serif;
@@ -60,7 +65,7 @@
             <option value="dark">Dark</option>
             <option value="digital_clock">Digital clock</option>
         </select>
-        <input id="settings-negative" type="checkbox">Show negative
+        <input id="settings-negative" type="checkbox"><label for="settings-negative">Show negative</label>
     </aside>
 </body>
 
