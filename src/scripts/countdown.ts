@@ -21,7 +21,7 @@ if (Number.isNaN(to)) {
     timeElement.textContent = '?:??:??';
     
     const errorMessage = `Invalid time: '${urlParams.get('time')}'`;
-    setTimeout(() => alert(errorMessage), 500);
+    setTimeout(() => alert(errorMessage), 100);
     throw errorMessage;
 }
 
