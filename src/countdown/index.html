@@ -50,6 +50,10 @@
             opacity: 1;
             background-color: white;
         }
+
+        .noclick {
+            pointer-events: none;
+        }
     </style>
     <link id="theme-css-link" rel="stylesheet" href="">
     <script type="module" src="/scripts/countdown.ts"></script>
@@ -65,7 +69,15 @@
             <option value="dark">Dark</option>
             <option value="digital_clock">Digital clock</option>
         </select>
-        <input id="settings-negative" type="checkbox"><label for="settings-negative">Show negative</label>
+        <label for="settings-seconds" class="noclick">Show seconds</label>
+        <select id="settings-seconds">
+            <option value="Infinity">Always</option>
+            <option value="300">Last 5 minutes</option>
+            <option value="60">Last minute</option>
+            <option value="0">Only for negative</option>
+            <option value="-Infinity">Never</option>
+        </select>
+        <label for="settings-negative" class="noclick">Show negative</label><input id="settings-negative" type="checkbox">
     </aside>
 </body>
 

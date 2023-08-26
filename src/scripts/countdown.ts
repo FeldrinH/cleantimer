@@ -18,7 +18,7 @@ function parseTime(time: string | null): number {
 const urlParams = new URLSearchParams(window.location.search)
 const to = parseTime(urlParams.get('time'))
 if (Number.isNaN(to)) {
-    timeElement.textContent = '?:??:??';
+    timeElement.textContent = '?';
     
     const errorMessage = `Invalid time: '${urlParams.get('time')}'`;
     setTimeout(() => alert(errorMessage), 100);
@@ -31,9 +31,14 @@ function formatTime(totalSeconds: number) {
     }
     const normalizedSeconds = Math.abs(totalSeconds);
     const hours = Math.floor(normalizedSeconds / 3600)
-    const minutes = Math.floor((normalizedSeconds % 3600) / 60)
-    const seconds = normalizedSeconds % 60
-    return `${totalSeconds < 0 ? '-' : ''}${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+    if (totalSeconds < settings.secondsLimit) {
+        const minutes = Math.floor((normalizedSeconds % 3600) / 60)
+        const seconds = normalizedSeconds % 60
+        return `${totalSeconds < 0 ? '-' : ''}${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    } else {
+        const minutes = (totalSeconds < 0 ? Math.floor : Math.ceil)((normalizedSeconds % 3600) / 60)
+        return `${totalSeconds <= -60 ? '-' : ''}${hours}:${minutes.toString().padStart(2, '0')}`;
+    }
 }
 
 let secondsLeft: number;
