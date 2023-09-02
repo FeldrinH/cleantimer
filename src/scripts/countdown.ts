@@ -31,7 +31,7 @@ function formatTime(totalSeconds: number) {
     }
     const normalizedSeconds = Math.abs(totalSeconds);
     const hours = Math.floor(normalizedSeconds / 3600)
-    if (totalSeconds < settings.secondsLimit) {
+    if (totalSeconds <= settings.secondsLimit) {
         const minutes = Math.floor((normalizedSeconds % 3600) / 60)
         const seconds = normalizedSeconds % 60
         return `${totalSeconds < 0 ? '-' : ''}${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
