@@ -22,7 +22,30 @@
         main {
             margin: auto;
             padding: 1.5rem;
+            max-width: 800px;
+        }
+
+        form {
+            margin: 50px auto 60px auto;
             width: fit-content;
+        }
+
+        .form-content {
+            font-size: 1.4rem;
+        }
+        
+        h3 {
+            font-weight: 600;
+        }
+
+        code {
+            padding: 0.2em 0.4em;
+            margin: 0;
+            background-color: rgba(175, 184, 193, 0.2);
+            border-radius: 6px;
+            font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace;
+            font-size: 85%;
+            white-space: break-spaces;
         }
     </style>
 </head>
@@ -30,10 +53,23 @@
 <body>
     <main>
 		<form action="/countdown/" method="get">
-			<label for="time">Countdown to:</label>
-			<input id="time" name="time" type="text" autocapitalize="off" required autofocus>
-			<button>Start</button>
+			<label for="time" class="form-content">Countdown to: </label>
+			<input id="time" name="time" class="form-content" type="text" autocapitalize="off" required autofocus>
+			<button class="form-content">Start</button>
 		</form>
+        <div>
+            <h3>Instructions</h3>
+            <p>
+                Time can be entered in most natural language formats
+                (for example <code>21:00</code>, <code>tomorrow noon</code> and <code>23 minutes after 12:00</code> are all known to work).
+            </p>
+            <p>
+                Some customization options are available on the countdown page when hovering the cursor in the bottom right corner.
+            </p>
+            <p>
+                View source code on <a href="https://github.com/FeldrinH/cleantimer">GitHub</a>.
+            </p>
+        </div>
 	</main>
 </body>
 
